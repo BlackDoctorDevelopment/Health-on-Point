@@ -222,7 +222,7 @@ const styles: Record<string, React.CSSProperties> = {
     minHeight: 0,
     display: 'flex',
     flexDirection: 'column',
-    position: 'relative',
+    position: 'relative' as const,
     borderRight: '1px solid #e0e0e0',
     backgroundColor: WHITE,
   },
