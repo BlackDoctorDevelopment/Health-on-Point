@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 const TAVUS_API_KEY = process.env.TAVUS_API_KEY!
-const TAVUS_REPLICA_ID = process.env.TAVUS_REPLICA_ID!
+const TAVUS_REPLICA_ID = process.env.TAVUS_REPLICA_ID ?? 'r5a49abdccf8'
 const TAVUS_PERSONA_ID = process.env.TAVUS_PERSONA_ID!
 
 const SYSTEM_PROMPT = `You are Dr. Maya, a cardiovascular health advisor for BlackDoctor.org. You are sitting alongside a physician who is conducting a Cardio Risk Assessment for their African American patient using a quiz form on the left side of the screen.
