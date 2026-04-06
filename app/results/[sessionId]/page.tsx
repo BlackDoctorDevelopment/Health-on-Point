@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useParams } from 'next/navigation'
 
@@ -7,9 +8,29 @@ export default function ResultsPage() {
   const router = useRouter()
   const params = useParams()
   const sessionId = params?.sessionId as string
+  const [downloading, setDownloading] = useState(false)
 
   const handleRestart = () => {
     router.push('/')
+  }
+
+  const handleDownload = async () => {
+    setDownloading(true)
+    try {
+      const res = await fetch(`/api/pdf/${sessionId}`)
+      if (!res.ok) throw new Error('PDF generation failed')
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `cardio-assessment-${sessionId}.pdf`
+      a.click()
+      URL.revokeObjectURL(url)
+    } catch (err) {
+      console.error('Download error:', err)
+    } finally {
+      setDownloading(false)
+    }
   }
 
   return (
@@ -56,6 +77,13 @@ export default function ResultsPage() {
             >
               Heart Health Resources
             </a>
+            <button
+              style={styles.downloadBtn}
+              onClick={handleDownload}
+              disabled={downloading}
+            >
+              {downloading ? 'Preparing…' : '⬇ Download PDF'}
+            </button>
             <button style={styles.restartBtn} onClick={handleRestart}>
               ↺ New Session
             </button>
@@ -226,6 +254,16 @@ const styles: Record<string, React.CSSProperties> = {
     fontWeight: 600,
     fontSize: 14,
     textAlign: 'center' as const,
+  },
+  downloadBtn: {
+    backgroundColor: '#1a1a1a',
+    color: '#fff',
+    border: 'none',
+    borderRadius: 8,
+    padding: '12px 20px',
+    fontSize: 14,
+    fontWeight: 600,
+    cursor: 'pointer',
   },
   restartBtn: {
     backgroundColor: GOLD,
