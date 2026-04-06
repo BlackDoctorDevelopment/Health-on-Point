@@ -155,7 +155,7 @@ export default function HomePage() {
         </div>
 
         <div style={styles.videoWrapper}>
-          {tavusState === 'loading' && (
+          {(tavusState === 'idle' || tavusState === 'loading') && (
             <div style={styles.placeholder}>
               <div style={styles.spinner} />
               <p style={styles.placeholderText}>Starting AI advisor…</p>
@@ -208,7 +208,8 @@ const WHITE = '#ffffff'
 const styles: Record<string, React.CSSProperties> = {
   root: {
     display: 'flex',
-    height: '100%',
+    flex: 1,
+    minHeight: 0,
     width: '100%',
     overflow: 'hidden',
     fontFamily: "'Segoe UI', system-ui, sans-serif",
@@ -218,6 +219,7 @@ const styles: Record<string, React.CSSProperties> = {
   // Left panel — Typeform
   leftPanel: {
     flex: '1 1 55%',
+    minHeight: 0,
     display: 'flex',
     flexDirection: 'column',
     position: 'relative',
@@ -253,6 +255,7 @@ const styles: Record<string, React.CSSProperties> = {
   // Right panel — Tavus AI
   rightPanel: {
     flex: '0 0 45%',
+    minHeight: 0,
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: BLACK,
