@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
 
         {/* ── Main content ─────────────────────────────────────────── */}
-        <main style={{ flex: 1, overflow: 'hidden', display: 'flex' }}>
+        <main style={{ flex: 1, height: 0, overflow: 'hidden', display: 'flex' }}>
           {children}
         </main>
 
