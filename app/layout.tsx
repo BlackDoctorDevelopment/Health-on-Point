@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://blackdoctor-340b-ou62.vercel.app/BlackDoctor_PrimaryLogo_Black.svg"
+            src="/BlackDoctor_PrimaryLogo_Black.png"
             alt="BlackDoctor.org"
             style={{ height: 28, width: 'auto', filter: 'invert(1)' }}
           />
