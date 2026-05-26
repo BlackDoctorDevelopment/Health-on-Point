@@ -1,0 +1,40 @@
+/* Health on Point — Admin Styles */
+
+/* Tavus dropdowns */
+.hop-tavus-replica .acf-input select,
+.hop-tavus-persona .acf-input select {
+    min-width: 320px;
+}
+
+/* List table columns */
+.column-hop_slug  { width: 130px; }
+.column-hop_replica { width: 200px; }
+.column-hop_embed { width: 280px; }
+
+.column-hop_slug code,
+.column-hop_embed code {
+    font-size: 12px;
+    background: #f0f0f1;
+    padding: 2px 7px;
+    border-radius: 3px;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Import metabox */
+#hop_csv_import .description code {
+    font-size: 11px;
+    word-break: break-all;
+}
+
+/* Settings page */
+.hop-settings-note {
+    background: #fff8e5;
+    border-left: 4px solid #EFB14D;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
