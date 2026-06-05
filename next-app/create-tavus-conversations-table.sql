@@ -1,23 +1,7 @@
--- Create the tavus_conversations table for Tavus conversation sync
-create table if not exists public.tavus_conversations (
-  conversation_id text primary key,
-  conversation_name text,
-  conversation_url text,
-  conversational_context text,
-  callback_url text,
-  status text,
-  replica_id text,
-  persona_id text,
-  persona_name text,
-  experience_name text,
-  duration_seconds integer,
-  duration_minutes integer,
-  fetched_at timestamptz not null default now(),
-  created_at timestamptz,
-  updated_at timestamptz,
-  monday_item_id text
-);
-
-create index if not exists tavus_conversations_fetched_at_idx on public.tavus_conversations (fetched_at desc);
-create index if not exists tavus_conversations_status_idx on public.tavus_conversations (status);
-create index if not exists tavus_conversations_persona_id_idx on public.tavus_conversations (persona_id);
+-- Supabase table for Tavus conversation usage data
+-- Matches the rows written by next-app/app/api/sync-tavus-usage/route.js
+-- Table name: tavus_conversation_usage (override via SUPABASE_TABLE_NAME)
+create table if not exists public.tavus_conversation_usage (conversation_id text primary key, persona_name text, experience_name text, user_id text, status text, started_at timestamptz, ended_at timestamptz, duration_seconds integer, duration_minutes integer, estimated_cost numeric, shutdown_reason text, monday_item_id text);
+create index if not exists tavus_conversation_usage_started_at_idx on public.tavus_conversation_usage (started_at desc);
+create index if not exists tavus_conversation_usage_persona_idx on public.tavus_conversation_usage (persona_name);
+create index if not exists tavus_conversation_usage_experience_idx on public.tavus_conversation_usage (experience_name);
