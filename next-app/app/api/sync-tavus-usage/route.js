@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
 const TABLE_NAME = process.env.SUPABASE_TABLE_NAME || 'tavus_conversation_usage';
-const COST_PER_MINUTE = 0.05;
 
+const COST_PER_MINUTE = 0.25;
 function getMissingEnvVars() {
   return ['SUPABASE_URL', 'SUPABASE_SERVICE_ROLE_KEY', 'TAVUS_API_KEY', 'CRON_SECRET'].filter((key) => !process.env[key]);
 }
