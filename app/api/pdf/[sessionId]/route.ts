@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-// @ts-expect-error — pdfkit ships CJS; types come from @types/pdfkit
 import PDFDocument from 'pdfkit'
 
 const GOLD = '#EFB14D'
